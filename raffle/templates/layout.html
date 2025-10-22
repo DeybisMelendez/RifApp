@@ -13,12 +13,92 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@200;400;700;800&display=swap" rel="stylesheet">
     <style>
+      html, body {
+        background-color: rgb(19, 22.5, 30.5) !important;
+      }
       h1, h2, h3, h4, h5, h6,p,span, a, div, td, th, label, button, li {
         font-family: 'Mountains of Christmas', "Poppins", cursive;
       }
-    </style>
+      img {
+        max-width: 100%;
+        height: auto;
+        margin: auto;
+        display: block;
+      }
+      img, article {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Estilo de neón para todos los enlaces */
+      a {
+        color: #0ff; /* color principal del neón */
+        text-decoration: none;
+        text-shadow:
+          0 0 5px #0ff,
+          0 0 10px #0ff,
+          0 0 20px #0ff,
+          0 0 40px #0ff;
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Efecto al pasar el cursor */
+      a:hover {
+        color: #ff0; /* color de neón al hover */
+        text-shadow:
+          0 0 5px #ff0,
+          0 0 10px #ff0,
+          0 0 20px #ff0,
+          0 0 40px #ff0,
+          0 0 80px #ff0;
+      }
+      </style>
   </head>
   <body>
+    <ul class="lightrope">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
     <nav class="container">
       <ul>
         <li>Sorteos de Deybis 2025</li>
@@ -37,4 +117,5 @@
     </main>
   </body>
   <script src="{% static 'snowstorm.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'lights.css' %}">
 </html>

@@ -1,6 +1,25 @@
+
 {% extends "layout.html" %}
+{% load static %}
 {% block title %}Lista de Sorteos{% endblock %}
 {% block content %}
+
+<section>
+    <h1>🎄 Bienvenidos a los Sorteos Navideños 2025</h1>
+    <img src="{% static 'foto.png' %}" alt="Foto de Deybis Melendez con Regalos">
+    <p>
+        Hola, soy <strong>Deybis Melendez</strong>. Cada año realizo sorteos de juguetes para los clientes de la 
+        <strong>Sala de Videojuegos Deybis</strong>. <br>
+        Por cada hora alquilada, se registra un número de sorteo. <br><br>
+        A partir del <strong>1 de noviembre de 2025</strong> hasta el <strong>24 de diciembre de 2025</strong>, se estarán registrando participaciones a los sorteos.  <br><br>
+        El <strong>24 de diciembre</strong> se dará a conocer a los ganadores, tiene hasta el 26 de diciembre para reclamar, de lo contrario, se volverá a rifar el 31 de diciembre.  <br><br>
+        Además, he decidido otorgar un premio especial a los jugadores que más se anoten en todos los sorteos.  
+        Adicionalmente, cada día se rifará al azar <strong>1 hora gratis</strong> para un participante desde el 1 de noviembre de 2025 hasta 31 de diciembre de 2025.
+    </p>
+</section>
+
+<hr>
+
 <section>
     <h1>🎁 Ganador de 1 hora gratis</h1>
     {% if daily_winner %}
