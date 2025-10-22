@@ -31,8 +31,8 @@ class RaffleNumber(models.Model):
     
     @staticmethod
     def available_numbers(self):
-        """Return a list of available numbers (0–99) for the given raffle."""
-        taken_numbers = RaffleNumber.objects.filter(raffle_id=self.raffle.id).values_list('number', flat=True)
+        """Devuelve una lista de números disponibles (0–99) para este sorteo."""
+        taken_numbers = RaffleNumber.objects.filter(raffle=self.raffle).values_list('number', flat=True)
         return [n for n in range(100) if n not in taken_numbers]
     
     class Meta:

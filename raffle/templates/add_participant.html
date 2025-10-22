@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Crear Participante{% endblock %}
+{% block content %}
+<h1>Crear Nuevo Participante</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}

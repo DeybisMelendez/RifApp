@@ -1,11 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from .models import Raffle, RaffleNumber
 from django.db.models import Count
 from .models import Participant, DailyWinner
 from django.utils import timezone
 import random
 from datetime import date
-
+from django.contrib.admin.views.decorators import staff_member_required
+from .forms import ParticipantForm, RaffleNumberForm
+from django.contrib import messages
 
 START_DATE = date(2025, 11, 1)
 
@@ -74,3 +76,31 @@ def daily_winners_history(request):
         'winners': winners
     }
     return render(request, 'daily_winners_history.html', context)
+
+
+@staff_member_required
+def add_participant(request):
+    """Vista para crear un nuevo participante (solo administradores)."""
+    if request.method == 'POST':
+        form = ParticipantForm(request.POST)
+        if form.is_valid():
+            form.save()
+    form = ParticipantForm()
+    context = {
+        'form': form,
+        'participants': Participant.objects.all().order_by('name'),
+    }
+    return render(request, 'add_participant.html', context)
+
+@staff_member_required
+def add_raffle_number(request):
+    if request.method == 'POST':
+        form = RaffleNumberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Número agregado correctamente.")
+            return redirect('add_raffle_number')
+    else:
+        form = RaffleNumberForm()
+
+    return render(request, 'add_raffle_number.html', {'form': form})
