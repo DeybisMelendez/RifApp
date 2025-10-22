@@ -11,13 +11,16 @@
     >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@200;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@200;400;700;800&display=swap" rel="stylesheet">
     <style>
       html, body {
         background-color: rgb(19, 22.5, 30.5) !important;
       }
-      h1, h2, h3, h4, h5, h6,p,span, a, div, td, th, label, button, li {
+      h1, h2, h3, h4, h5, h6, a, th {
         font-family: 'Mountains of Christmas', "Poppins", cursive;
+      }
+      p, li, td, span, div {
+        font-family: 'Comic Neue', "Poppins", sans-serif;
       }
       img {
         max-width: 100%;
@@ -101,9 +104,6 @@
 </ul>
     <nav class="container">
       <ul>
-        <li>Sorteos de Deybis 2025</li>
-      </ul>
-      <ul>
         <li>
           <a href="{% url 'raffle_list' %}">Sorteos</a>
           <a href="{% url 'top_participants' %}">Top</a>
@@ -115,7 +115,25 @@
       {% block content %}
       {% endblock %}
     </main>
+    
+    <footer class="container" style="text-align:center; margin-top:2rem;">
+      <div id="christmas-tree">🎄</div>
+    </footer>
+
+    <style>
+      #christmas-tree {
+        font-size: 3rem;
+        animation: bounce 2s infinite alternate;
+      }
+
+      @keyframes bounce {
+        0% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-10px) scale(1.1); }
+        100% { transform: translateY(0) scale(1); }
+      }
+    </style>
+    <script src="{% static 'snowstorm.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lights.css' %}">
   </body>
-  <script src="{% static 'snowstorm.js' %}"></script>
-  <link rel="stylesheet" href="{% static 'lights.css' %}">
+
 </html>
