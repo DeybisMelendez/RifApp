@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Historial de Ganadores Diarios{% endblock %}
+
+{% block content %}
+<main class="container">
+
+  <h1>🏆 Historial de Ganadores Diarios</h1>
+
+  {% if winners %}
+    <table role="grid">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Fecha</th>
+          <th>Participante</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for winner in winners %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ winner.date }}</td>
+          <td>{{ winner.participant.name }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay ganadores diarios registrados aún.</p>
+  {% endif %}
+
+</main>
+{% endblock %}

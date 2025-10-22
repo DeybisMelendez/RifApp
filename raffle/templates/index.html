@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %}Lista de Sorteos{% endblock %}
+{% block content %}
+<section>
+    <h1>🎁 Ganador de 1 hora gratis</h1>
+    {% if daily_winner %}
+        <p>El ganador de hoy ({{ daily_winner.date }}) es <strong>{{ daily_winner.participant.name }}</strong>!</p>
+    {% else %}
+        <p>No hay ganador asignado aún.</p>
+    {% endif %}
+</section>
+<hr>
+<section>
+    <h1>📋 Lista de Sorteos</h1>
+    {% for raffle in raffles %}
+        <article>
+            <h1>{{ raffle.prize_name }}</h1>
+            <p>{{ raffle.prize_description }}</p>
+            {% if raffle.prize_image %}
+                <img src="{{ raffle.prize_image.url }}" alt="Imagen del premio"/>
+            {% else %}
+                <p>No hay imagen disponible.</p>
+            {% endif %}
+            <p>
+                <em>Fecha del sorteo: {{ raffle.draw_date }}</em>
+            </p>
+            <a href="{% url 'raffle_detail' raffle.id %}">Ver lista de participantes</a>
+        </article>
+    {% empty %}
+        <article>No hay sorteos disponibles.</article>
+    {% endfor %}
+</section>
+
+{% endblock %}

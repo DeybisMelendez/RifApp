@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block title %}Sorteo {{ raffle.prize_name }}{% endblock %}
+
+{% block content %}
+<h1>{{ raffle.prize_name }}</h1>
+  <article>
+    <p>{{ raffle.prize_description|default:"Sin descripción disponible." }}</p>
+    <section>
+      {% if raffle.prize_image %}
+        <img src="{{ raffle.prize_image.url }}" alt="Prize image">
+      {% else %}
+        <p><em>Sin imagen del premio.</em></p>
+      {% endif %}
+
+      <p><strong>Fecha del sorteo:</strong> {{ raffle.draw_date|date:"d M Y" }}</p>
+      <p><strong>Estado:</strong>
+        {% if raffle.finalized %}
+          <span class="contrast">Finalizado</span>
+        {% else %}
+          <span class="secondary">Activo</span>
+        {% endif %}
+      </p>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>🎟️ Números Asignados</h2>
+      {% if assigned_numbers %}
+        <table role="grid">
+          <thead>
+            <tr>
+              <th>Número</th>
+              <th>Participante</th>
+              <th>Registrado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for number in assigned_numbers %}
+            <tr>
+              <td>#{{ number.number }}</td>
+              <td>{{ number.participant.name }}</td>
+              <td>{{ number.created_at|date:"d M Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No hay números asignados aún.</p>
+      {% endif %}
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>🔢 Números Disponibles ({{ available_numbers|length }})</h2>
+      {% if available_numbers %}
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          {% for num in available_numbers %}
+            <span style="padding: 0.3rem 0.5rem; border-radius: 4px; background: var(--muted-border-color);">
+              {{ num|add:"0"|slice:"-2" }}
+            </span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p><em>Todos los números han sido asignados.</em></p>
+      {% endif %}
+    </section>
+  </article>
+{% endblock %}

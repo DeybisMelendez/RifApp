@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Top Jugadores{% endblock %}
+
+{% block content %}
+<main class="container">
+
+  <h1>🏆 Top Jugadores 2025</h1>
+  <p>Lista de participantes más activos en todos los sorteos:</p>
+
+  <!-- Aviso destacado sobre el premio -->
+  <section class="alert success" style="margin-bottom:1rem;">
+    🎁 ¡El premio será <strong>sorpresa</strong> y se elegirá al participante #1 el <strong>24 de diciembre de 2025 a las 6:00 AM.</strong>!
+  </section>
+
+  {% if participants %}
+    <table role="grid">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Puntuación total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for participant in participants %}
+        <tr {% if forloop.first %}class="highlight"{% endif %}>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ participant.name }}</td>
+          <td>{{ participant.total_numbers }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay participantes registrados aún.</p>
+  {% endif %}
+
+</main>
+{% endblock %}

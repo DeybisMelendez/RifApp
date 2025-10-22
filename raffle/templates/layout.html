@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.red.min.css"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@200;400;700;800&display=swap" rel="stylesheet">
+    <style>
+      h1, h2, h3, h4, h5, h6,p,span, a, div, td, th, label, button, li {
+        font-family: 'Mountains of Christmas', "Poppins", cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="container">
+      <ul>
+        <li>Sorteos de Deybis 2025</li>
+      </ul>
+      <ul>
+        <li>
+          <a href="{% url 'raffle_list' %}">Sorteos</a>
+          <a href="{% url 'top_participants' %}">Top</a>
+          <a href="{% url 'daily_winners_history' %}">Historial</a>
+        </li>
+      </ul>
+    </nav>
+    <main class="container">
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+  <script src="{% static 'snowstorm.js' %}"></script>
+</html>
