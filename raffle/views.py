@@ -111,23 +111,52 @@ def add_participant(request):
     if request.method == 'POST':
         form = ParticipantForm(request.POST)
         if form.is_valid():
-            form.save()
-    form = ParticipantForm()
+            participant = form.save()
+            messages.success(request, f"Participante '{participant.name}' agregado correctamente.")
+            return redirect('add_participant')
+        else:
+            messages.error(request, "Ocurrió un error al guardar el participante. Verifica los datos.")
+    else:
+        form = ParticipantForm()
+
     context = {
         'form': form,
         'participants': Participant.objects.all().order_by('name'),
     }
     return render(request, 'add_participant.html', context)
 
+
 @staff_member_required
 def add_raffle_number(request):
+    """Vista para asignar un número a un participante en un sorteo."""
     if request.method == 'POST':
         form = RaffleNumberForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Número agregado correctamente.")
+            raffle_number = form.save()
+            messages.success(
+                request,
+                f"Número #{raffle_number.number} asignado a {raffle_number.participant.name} correctamente."
+            )
             return redirect('add_raffle_number')
+        else:
+            messages.error(request, "No se pudo asignar el número. Verifica que no esté repetido.")
     else:
         form = RaffleNumberForm()
 
     return render(request, 'add_raffle_number.html', {'form': form})
+
+
+@staff_member_required
+def claim_daily_winner(request, winner_id):
+    """Marca un premio diario como reclamado."""
+    winner = get_object_or_404(DailyWinner, pk=winner_id)
+
+    if winner.claimed:
+        messages.warning(request, f"⚠️ El premio de {winner.participant.name} ya fue reclamado anteriormente.")
+    else:
+        winner.claimed = True
+        winner.save()
+        messages.success(request, f"🏆 Has marcado como reclamado el premio de {winner.participant.name}.")
+
+    # Redirige a la página anterior o a una lista de ganadores
+    return redirect(request.META.get('HTTP_REFERER', 'daily_winners_list'))

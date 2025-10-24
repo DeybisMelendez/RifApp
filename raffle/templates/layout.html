@@ -125,6 +125,21 @@
       </ul>
     </nav>
     <main class="container">
+      {% if messages %}
+        <section>
+          {% for message in messages %}
+            <article>
+              <p>
+                <strong>
+                  {% if message.tags == 'success' %}✅ Éxito:{% elif message.tags == 'error' %}❌ Error:{% elif message.tags == 'warning' %}⚠️ Aviso:{% else %}ℹ️ Información:{% endif %}
+                </strong>
+                <br>
+                {{ message }}
+              </p>
+            </article>
+          {% endfor %}
+        </section>
+      {% endif %}
       {% block content %}
       {% endblock %}
     </main>

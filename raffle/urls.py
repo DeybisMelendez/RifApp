@@ -8,4 +8,5 @@ urlpatterns = [
     path("historial-de-ganadores-diarios/", views.daily_winners_history, name="daily_winners_history"),
     path('agregar-participante/', views.add_participant, name='add_participant'),
     path('agregar-numero-a-sorteo/', views.add_raffle_number, name='add_raffle_number'),
+    path('reclamar-ganador-diario/<int:winner_id>', views.claim_daily_winner, name="claim_daily_winner")
 ]
