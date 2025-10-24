@@ -10,10 +10,12 @@ from .forms import ParticipantForm, RaffleNumberForm
 from django.contrib import messages
 
 START_DATE = date(2025, 11, 1)
+END_DATE = date(2025, 12, 24)
 
 def raffle_list(request):
     """Muestra todos los sorteos."""
     daily_winner = get_or_create_daily_winner()
+    run_mass_draw()
     raffles = Raffle.objects.all().order_by('-created_at')
     context = {
         'raffles': raffles,
@@ -25,6 +27,9 @@ def raffle_detail(request, raffle_id):
     """Muestra información de un sorteo."""
 
     raffle = get_object_or_404(Raffle, pk=raffle_id)
+    winner = None
+    if raffle.finalized:
+        winner = RaffleNumber.objects.get(raffle=raffle, number=raffle.number_winner)
     assigned_numbers = RaffleNumber.objects.filter(raffle=raffle).select_related('participant')
     taken_numbers = [n.number for n in assigned_numbers]
     available_numbers = [n for n in range(100) if n not in taken_numbers]
@@ -33,6 +38,7 @@ def raffle_detail(request, raffle_id):
         'raffle': raffle,
         'assigned_numbers': assigned_numbers,
         'available_numbers': available_numbers,
+        'winner': winner,
     }
 
     return render(request, 'raffle_detail.html', context)
@@ -64,6 +70,27 @@ def get_or_create_daily_winner():
     })
 
     return winner
+
+def run_mass_draw():
+    """
+    Realiza un sorteo para todos los sorteos disponibles (finalized=False)
+    en la fecha 24 de diciembre de 2025. 
+    Asegura que ningún participante gane más de una vez.
+    """
+    today = date.today()
+
+    if today != END_DATE:
+        return
+
+    raffles = Raffle.objects.filter(finalized=False)
+
+    for raffle in raffles:
+        available_numbers = RaffleNumber.objects.filter(raffle=raffle)
+
+        winner_number = random.choice(available_numbers)
+        raffle.number_winner = winner_number.number
+        raffle.finalized = True
+        raffle.save()
 
 def daily_winners_history(request):
     """

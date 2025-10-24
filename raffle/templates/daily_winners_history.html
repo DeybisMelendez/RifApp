@@ -10,15 +10,13 @@
     <table role="grid">
       <thead>
         <tr>
-          <th>#</th>
           <th>Fecha</th>
-          <th>Participante</th>
+          <th>Ganador</th>
         </tr>
       </thead>
       <tbody>
         {% for winner in winners %}
         <tr>
-          <td>{{ forloop.counter }}</td>
           <td>{{ winner.date }}</td>
           <td>{{ winner.participant.name }}</td>
         </tr>

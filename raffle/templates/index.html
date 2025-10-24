@@ -40,9 +40,6 @@
             {% else %}
                 <p>No hay imagen disponible.</p>
             {% endif %}
-            <p>
-                <em>Fecha del sorteo: {{ raffle.draw_date }}</em>
-            </p>
             <a href="{% url 'raffle_detail' raffle.id %}">Ver lista de participantes</a>
         </article>
     {% empty %}

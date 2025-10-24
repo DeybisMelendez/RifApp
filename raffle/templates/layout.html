@@ -23,7 +23,8 @@
         font-family: 'Comic Neue', "Poppins", sans-serif;
       }
       img {
-        max-width: 100%;
+        width: 100%;
+        max-width: 400px;
         height: auto;
         margin: auto;
         display: block;
@@ -106,9 +107,21 @@
       <ul>
         <li>
           <a href="{% url 'raffle_list' %}">Sorteos</a>
+        </li>
+        <li>
           <a href="{% url 'top_participants' %}">Top</a>
+        </li>
+        <li>
           <a href="{% url 'daily_winners_history' %}">Historial</a>
         </li>
+        {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'add_participant' %}">Agregar persona</a>
+          </li>
+          <li>
+            <a href="{% url 'add_raffle_number' %}">Anotar numero</a>
+          </li>
+        {% endif %}
       </ul>
     </nav>
     <main class="container">

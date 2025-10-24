@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Participant, Raffle, RaffleNumber
+from .models import Participant, Raffle, RaffleNumber, DailyWinner
 
 
 class RaffleNumberInline(admin.TabularInline):
@@ -48,3 +48,10 @@ class RaffleNumberAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at',)
     ordering = ['raffle', 'number']
     autocomplete_fields = ['participant', 'raffle']
+
+@admin.register(DailyWinner)
+class DailyWinnerAdmin(admin.ModelAdmin):
+    list_display = ('participant', 'date', 'claimed', 'created_at')
+    list_filter = ('claimed', 'date')
+    search_fields = ('participant__name',)
+    ordering = ('-date',)

@@ -2,27 +2,30 @@
 {% block title %}Sorteo {{ raffle.prize_name }}{% endblock %}
 
 {% block content %}
-<h1>{{ raffle.prize_name }}</h1>
+  <h1>{{ raffle.prize_name }}</h1>
   <article>
-    <p>{{ raffle.prize_description|default:"Sin descripción disponible." }}</p>
     <section>
+      <p>{{ raffle.prize_description|default:"Sin descripción disponible." }}</p>
       {% if raffle.prize_image %}
         <img src="{{ raffle.prize_image.url }}" alt="Prize image">
       {% else %}
         <p><em>Sin imagen del premio.</em></p>
       {% endif %}
-
-      <p><strong>Fecha del sorteo:</strong> {{ raffle.draw_date|date:"d M Y" }}</p>
-      <p><strong>Estado:</strong>
-        {% if raffle.finalized %}
-          <span class="contrast">Finalizado</span>
-        {% else %}
-          <span class="secondary">Activo</span>
-        {% endif %}
-      </p>
     </section>
 
     <hr>
+
+    {% if raffle.finalized and winner %}
+    <section>
+      <h2>🏆 ¡Tenemos un ganador!</h2>
+      <p>
+        🎉 Felicitaciones a <strong>{{ winner.participant.name }}</strong> 🎉  
+        por ganar el premio <em>{{ raffle.prize_name }}</em> con el número 
+        <strong>#{{ winner.number|add:"0"|slice:"-2" }}</strong>.
+      </p>
+    </section>
+    <hr>
+    {% endif %}
 
     <section>
       <h2>🎟️ Números Asignados</h2>
@@ -38,9 +41,9 @@
           <tbody>
             {% for number in assigned_numbers %}
             <tr>
-              <td>#{{ number.number }}</td>
+              <td># {{ number.number }}</td>
               <td>{{ number.participant.name }}</td>
-              <td>{{ number.created_at|date:"d M Y H:i" }}</td>
+              <td>{{ number.created_at }}</td>
             </tr>
             {% endfor %}
           </tbody>
