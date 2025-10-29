@@ -3,7 +3,9 @@ body {
   background: linear-gradient(120deg, #0d1b2a, #1b263b, #2d3142, #1b263b) !important;
   animation: christmas-bg 15s ease infinite;
   color: #fff;
+  overflow-x: hidden;
 }
+
 
 @keyframes christmas-bg {
   0% { background-position: 0% 50%; }
@@ -116,7 +118,8 @@ a:hover {
 }
 /* ❄️ Copos de nieve realistas */
 .snowflake {
-  position: fixed;
+  position: fixed !important;;
+  overflow: hidden;
   top: -50px;
   color: #eee;
   font-size: 1rem;
@@ -137,8 +140,7 @@ a:hover {
   }
 }
 
-
-/* 🎄 Guirnalda de luces navideñas */
+/* 🎄 Guirnalda de luces navideñas (versión optimizada) */
 .christmas-lights {
   position: fixed;
   top: 0;
@@ -147,26 +149,30 @@ a:hover {
   height: 40px;
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
-  padding: 0 10px;
+  align-items: flex-start;
+  gap: 24px;
   pointer-events: none;
   z-index: 9999;
 }
 
 .light {
+  position: relative;
+  top: 10px;
   width: 14px;
   height: 24px;
   border-radius: 50% 50% 60% 60%;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-  animation: glow 1.5s infinite;
+  background: red;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: glow 2s infinite ease-in-out;
   transform-origin: top center;
-  transform: rotate(5deg);
+  will-change: opacity, filter;
 }
 
+/* ✨ Pequeño casquillo */
 .light::before {
   content: "";
   position: absolute;
-  top: -4px;
+  top: -5px;
   left: 50%;
   width: 6px;
   height: 6px;
@@ -175,30 +181,7 @@ a:hover {
   transform: translateX(-50%);
 }
 
-/* 🎨 Colores */
-.red { background: #ff4b4b; animation-delay: 0s; }
-.yellow { background: #fff94d; animation-delay: 0.3s; }
-.green { background: #6eff7b; animation-delay: 0.6s; }
-.blue { background: #4dc3ff; animation-delay: 0.9s; }
-.pink { background: #ff66c4; animation-delay: 1.2s; }
-.orange { background: #ffa64d; animation-delay: 1.5s; }
-.purple { background: #c77dff; animation-delay: 1.8s; }
-.cyan { background: #4dffff; animation-delay: 2.1s; }
-.lime { background: #bfff00; animation-delay: 2.4s; }
-
-/* ✨ Animación del parpadeo */
-@keyframes glow {
-  0%, 100% {
-    opacity: 1;
-    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
-  }
-  50% {
-    opacity: 0.5;
-    box-shadow: 0 0 5px currentColor;
-  }
-}
-
-/* 🧵 Efecto de cable */
+/* 🧵 Cable fijo */
 .christmas-lights::after {
   content: "";
   position: absolute;
@@ -207,9 +190,45 @@ a:hover {
   width: 100%;
   height: 2px;
   background: #333;
-  border-radius: 2px;
   z-index: -1;
 }
+
+/* 🎨 Colores individuales con delays distintos */
+.red { background: #ff4b4b; animation-delay: 0s; }
+.yellow { background: #fff94d; animation-delay: 0.2s; }
+.green { background: #6eff7b; animation-delay: 0.4s; }
+.blue { background: #4dc3ff; animation-delay: 0.6s; }
+.pink { background: #ff66c4; animation-delay: 0.8s; }
+.orange { background: #ffa64d; animation-delay: 1s; }
+.purple { background: #c77dff; animation-delay: 1.2s; }
+.cyan { background: #4dffff; animation-delay: 1.4s; }
+.lime { background: #bfff00; animation-delay: 1.6s; }
+
+/* 💡 Parpadeo estable sin alterar posición */
+@keyframes glow {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1.4);
+  }
+  50% {
+    opacity: 0.5;
+    filter: brightness(0.6);
+  }
+}
+
+/* 🌬️ Movimiento leve tipo “colgante” (opcional) */
+@keyframes swing {
+  0%, 100% { transform: rotate(3deg); }
+  50% { transform: rotate(-3deg); }
+}
+
+.light {
+  animation-name: glow, swing;
+  animation-duration: 2s, 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
 nav {
   margin-top: 24px;
 }
