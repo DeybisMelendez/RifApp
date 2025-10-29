@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(snowContainer);
 
   const snowflakes = ["❄️", "❅", "❆"];
-  const snowflakeCount = 50; // número total de copos en pantalla
+  const snowflakeCount = 25; // número total de copos en pantalla
 
   for (let i = 0; i < snowflakeCount; i++) {
     const snowflake = document.createElement("span");
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     snowflake.style.left = Math.random() * 100 + "vw";
     snowflake.style.fontSize = 0.8 + Math.random() * 1.5 + "rem";
     snowflake.style.animationDuration = 8 + Math.random() * 10 + "s";
-    snowflake.style.animationDelay = Math.random() * 10 + "s";
+    //snowflake.style.animationDelay = Math.random() * 10 + "s";
     snowflake.style.opacity = 0.3 + Math.random() * 0.7;
 
     snowContainer.appendChild(snowflake);
