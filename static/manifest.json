@@ -1,0 +1,22 @@
+{
+  "name": "Sorteo navideño Sala de Juegos Deybis",
+  "short_name": "Sorteo Videojuegos Deybis",
+  "description": "Sorteos navideños de la Sala de Juegos Deybis",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#13161E",
+  "theme_color": "#FF4040",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/static/icons/christmas-elf-2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/christmas-elf.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
