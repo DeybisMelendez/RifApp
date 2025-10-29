@@ -12,97 +12,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@200;400;700;800&display=swap" rel="stylesheet">
-    <style>
-      html, body {
-        background-color: rgb(19, 22.5, 30.5) !important;
-      }
-      h1, h2, h3, h4, h5, h6, a, th {
-        font-family: 'Mountains of Christmas', "Poppins", cursive;
-      }
-      p, li, td, span, div {
-        font-family: 'Comic Neue', "Poppins", sans-serif;
-      }
-      img {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        margin: auto;
-        display: block;
-      }
-      img, article {
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-      }
-
-      /* Estilo de neón para todos los enlaces */
-      a {
-        color: #0ff; /* color principal del neón */
-        text-decoration: none;
-        text-shadow:
-          0 0 5px #0ff,
-          0 0 10px #0ff,
-          0 0 20px #0ff,
-          0 0 40px #0ff;
-        transition: all 0.3s ease-in-out;
-      }
-
-      /* Efecto al pasar el cursor */
-      a:hover {
-        color: #ff0; /* color de neón al hover */
-        text-shadow:
-          0 0 5px #ff0,
-          0 0 10px #ff0,
-          0 0 20px #ff0,
-          0 0 40px #ff0,
-          0 0 80px #ff0;
-      }
-      </style>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
   </head>
   <body>
-    <ul class="lightrope">
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-</ul>
+    <div class="christmas-lights">
+      <div class="light red"></div>
+      <div class="light yellow"></div>
+      <div class="light green"></div>
+      <div class="light blue"></div>
+      <div class="light pink"></div>
+      <div class="light orange"></div>
+      <div class="light purple"></div>
+      <div class="light cyan"></div>
+      <div class="light lime"></div>
+    </div>
     <nav class="container">
       <ul>
         <li>
@@ -143,25 +66,10 @@
       {% block content %}
       {% endblock %}
     </main>
-    
     <footer class="container" style="text-align:center; margin-top:2rem;">
       <div id="christmas-tree">🎄</div>
     </footer>
-
-    <style>
-      #christmas-tree {
-        font-size: 3rem;
-        animation: bounce 2s infinite alternate;
-      }
-
-      @keyframes bounce {
-        0% { transform: translateY(0) scale(1); }
-        50% { transform: translateY(-10px) scale(1.1); }
-        100% { transform: translateY(0) scale(1); }
-      }
-    </style>
     <script src="{% static 'snowstorm.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'lights.css' %}">
   </body>
 
 </html>

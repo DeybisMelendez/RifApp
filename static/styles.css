@@ -1,0 +1,216 @@
+html,
+body {
+  background: linear-gradient(120deg, #0d1b2a, #1b263b, #2d3142, #1b263b) !important;
+  animation: christmas-bg 15s ease infinite;
+  color: #fff;
+}
+
+@keyframes christmas-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+th {
+  font-family: "Mountains of Christmas", "Poppins", cursive;
+}
+
+p,
+li,
+td,
+span,
+div {
+  font-family: "Comic Neue", "Poppins", sans-serif;
+}
+
+h1, h2, h3 {
+  text-shadow: 0 0 10px #ff4040, 0 0 20px #40ff40;
+  animation: glow-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+  from { text-shadow: 0 0 10px #ff4040, 0 0 20px #40ff40; }
+  to { text-shadow: 0 0 30px #40ff40, 0 0 60px #ff4040;}
+}
+
+img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: auto;
+  display: block;
+}
+
+img,
+article {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+nav ul li a {
+  position: relative;
+}
+
+nav ul li a::after {
+  content: "✨";
+  opacity: 0;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Fondo animado */
+@keyframes christmas-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Estilo de neón para todos los enlaces */
+a {
+  color: #0ff;
+  /* color principal del neón */
+  text-decoration: none;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efecto al pasar el cursor */
+a:hover {
+  color: #ff0;
+  /* color de neón al hover */
+  text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #ff0,
+    0 0 80px #ff0;
+}
+
+#christmas-tree {
+  font-size: 3rem;
+  animation: bounce 2s infinite alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+/* ❄️ Copos de nieve realistas */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 1rem;
+  opacity: 0.8;
+  pointer-events: none;
+  user-select: none;
+  animation: fall linear infinite;
+  text-shadow: 0 0 5px #fff;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* 🎄 Guirnalda de luces navideñas */
+.christmas-lights {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 0 10px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.light {
+  width: 14px;
+  height: 24px;
+  border-radius: 50% 50% 60% 60%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  animation: glow 1.5s infinite;
+  transform-origin: top center;
+  transform: rotate(5deg);
+}
+
+.light::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #555;
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+/* 🎨 Colores */
+.red { background: #ff4b4b; animation-delay: 0s; }
+.yellow { background: #fff94d; animation-delay: 0.3s; }
+.green { background: #6eff7b; animation-delay: 0.6s; }
+.blue { background: #4dc3ff; animation-delay: 0.9s; }
+.pink { background: #ff66c4; animation-delay: 1.2s; }
+.orange { background: #ffa64d; animation-delay: 1.5s; }
+.purple { background: #c77dff; animation-delay: 1.8s; }
+.cyan { background: #4dffff; animation-delay: 2.1s; }
+.lime { background: #bfff00; animation-delay: 2.4s; }
+
+/* ✨ Animación del parpadeo */
+@keyframes glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 5px currentColor;
+  }
+}
+
+/* 🧵 Efecto de cable */
+.christmas-lights::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+  z-index: -1;
+}
+nav {
+  margin-top: 24px;
+}
