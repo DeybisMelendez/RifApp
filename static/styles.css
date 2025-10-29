@@ -1,16 +1,9 @@
 html,
 body {
-  background: linear-gradient(120deg, #0d1b2a, #1b263b, #2d3142, #1b263b) !important;
+  background-color: #0d1b2a !important;
   animation: christmas-bg 15s ease infinite;
   color: #fff;
   overflow-x: hidden;
-}
-
-
-@keyframes christmas-bg {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 h1,
@@ -34,12 +27,6 @@ div {
 
 h1, h2, h3 {
   text-shadow: 0 0 10px #ff4040, 0 0 20px #40ff40;
-  animation: glow-pulse 3s ease-in-out infinite alternate;
-}
-
-@keyframes glow-pulse {
-  from { text-shadow: 0 0 10px #ff4040, 0 0 20px #40ff40; }
-  to { text-shadow: 0 0 30px #40ff40, 0 0 60px #ff4040;}
 }
 
 img {
@@ -55,40 +42,13 @@ article {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
-nav ul li a {
-  position: relative;
-}
-
-nav ul li a::after {
-  content: "✨";
-  opacity: 0;
-  animation: twinkle 2s infinite ease-in-out;
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-/* Fondo animado */
-@keyframes christmas-bg {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
 /* Estilo de neón para todos los enlaces */
 a {
   color: #0ff;
   /* color principal del neón */
   text-decoration: none;
-  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+  text-shadow: 0 0 5px #0ff;
   transition: all 0.3s ease-in-out;
 }
 
@@ -96,8 +56,7 @@ a {
 a:hover {
   color: #ff0;
   /* color de neón al hover */
-  text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #ff0,
-    0 0 80px #ff0;
+  text-shadow: 0 0 5px #ff0;
 }
 
 #christmas-tree {
